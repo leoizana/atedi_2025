@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un nouvel utilisateur{% endblock %}
+
+{% block body %}
+    <a href="{{ path('user_index') }}"><i class="fas fa-chevron-left h1 float-left"></i></a>
+    <h2 class='text-center mb-5 font-weight-bold'>Ajouter un nouvel utilisateur</h2>
+
+    {{ form_start(registrationForm) }}
+
+    <div class="p-4 form container-background">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class='col row col-12'>    
+                    <div class='col-6'>   
+                        {{ form_row(registrationForm.first_name, {'label': 'Prénom', 'attr': {'class': 'mb-3'}}) }}
+                    </div>
+                    <div class='col-6'> 
+                        {{ form_row(registrationForm.plainPassword.first, {'label': 'Mot de passe', 'attr': {'class': 'mb-3'}}) }}
+                    </div>
+                    <div class='col-6'> 
+                        {{ form_row(registrationForm.email, {'attr': {'class': 'mb-3'}}) }}
+                    </div>
+                    <div class='col-6'> 
+                        {{ form_row(registrationForm.plainPassword.second, {'label': 'Confirmer le mot de passe', 'attr': {'class': 'mb-3'}}) }}
+                    </div>
+                    <div class='col-6'> 
+                        {{ form_row(registrationForm.roles, {'attr': {'class': 'mb-3'}}) }}
+                    </div>
+                </div>
+                <button class="green-btn py-2 px-4 mt-3">{{ button_label|default('Valider') }}</button>
+            </div>
+        </div>
+    </div>
+
+    {{ form_end(registrationForm) }}
+
+{% endblock %}
