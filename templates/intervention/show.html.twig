@@ -14,10 +14,21 @@
     <div class='h2 mb-3 font-weight-bold'>Gestion de la demande d'intervention n°{{ intervention.id }}</div>
     <a class="grey-btn f-20 px-4 py-2" href="{{ path('intervention_edit', {'id': intervention.id}) }}">Modifier</a>
     {{ include('intervention/_delete_form.html.twig') }}
-    <form action="" method="post" class="d-inline-block">
-        <button type='submit' name='download' value='request' class='green-btn f-20 px-4 py-2'>Télécharger</button>
-    </form>
+
+    <!-- Rapprochons les boutons avec une petite marge -->
+    <div class="d-inline-block">
+        <form action="" method="post" class="d-inline-block" style="margin: 0;">
+            <button type='submit' name='download' value='request' class='green-btn f-20 px-4 py-2' style="margin-right: 2px;">Télécharger</button>
+        </form>
+        <form action="" method="post" class="d-inline-block" style="margin: 0;">
+            <button type='submit' name='download' value='both' class='green-btn f-20 px-4 py-2'>Télécharger + Rapport</button>
+        </form>
+    </div>
 </div>
+
+
+
+
 <hr>
 
 <div class="container show-container">
@@ -198,35 +209,6 @@
                     </div>
                 </div>
             </div>
-
-     
-                {% if intervention.interventionReport.step == 9 %}
-                    <div class="container-background mb-5 p-4">
-                        <div class='f-20 text-center font-weight-bold'>Rapport d'intervention</div>
-                        <hr>
-                        <div class='row'>
-                            <div class='col text-center'>
-                                <form action="" method="post">
-                                    <i class="fas fa-download mr-3 my-auto"></i>
-                                    <button type='submit' name='download' value='bill' class='grey-btn px-4 py-1'>Télécharger</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container-background mb-5 p-4">
-                        <div class='f-20 text-center font-weight-bold'>Demande + Rapport</div>
-                        <hr>
-                        <div class='row'>
-                            <div class='col text-center'>
-                                <form action="" method="post">
-                                    <i class="fas fa-download mr-3 my-auto"></i>
-                                    <button type='submit' name='download' value='both' class='grey-btn px-4 py-1'>Télécharger</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-
             </div>
         </div>
     </div>

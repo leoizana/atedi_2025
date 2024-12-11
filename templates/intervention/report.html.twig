@@ -47,16 +47,18 @@
                     {% endfor %}
                 </div>
             </div>
-        {% elseif step == 2 %}
+            {% elseif step == 2 %}
             <div class="row justify-content-around mb-3 report-container">
                 <div class='col-12 justify-content-center row step-title p-2 mb-3'>
-                    <a href="{{ path('software_new', {'s': 'report', 'id': intervention.id}) }}" class='my-auto'><i data-toggle="tooltip" title="Ajouter un logiciel" class="float-left fas add-btn fa-plus-circle fa-lg mr-2"></i></a><div class='f-20'>Logiciel(s) de nettoyage utilisé(s)</div>
+                    <a href="{{ path('software_new', {'s': 'report', 'id': intervention.id}) }}" class='my-auto'>
+                        <i data-toggle="tooltip" title="Ajouter un logiciel" class="float-left fas add-btn fa-plus-circle fa-lg mr-2"></i>
+                    </a>
+                    <div class='f-20'>Logiciel(s) de nettoyage utilisé(s)</div>
                 </div>
                 <div class="container-background col p-4 content list">
                     <div class='row justify-content-center'>
                         <div class='col-md-auto'><input class='mr-2' type="radio" name="severity" value="Matériel non infecté" required checked />Matériel non infecté</div>
-                        <div class='col-md-auto'><input class='mr-2' type="radio" name="severity" value="Matériel légèrement infecté" />Matériel légèrement infecté</div>
-                        <div class='col-md-auto'><input class='mr-2' type="radio" name="severity" value="Matériel dangereusement infecté" />Matériel dangereusement infecté</div>
+                        <div class='col-md-auto'><input class='mr-2' type="radio" name="severity" value="Matériel légèrement infecté" />Matériel infecté</div>
                     </div>
                     
                     <div class='more-content'>
@@ -66,12 +68,56 @@
                         <h5>Analyse interne <span class='h6 font-italic'>(facultatif)<span></h5>
                         <input class='w-100 mb-3 p-2' type="text" id="internalAnalysis" name="internal-analysis">
                         <input class='w-100 mb-3 p-2' type="text" id="searchBar" placeholder="Rechercher un logiciel">
-                        {% for software in softwares %}
-                            <div class='data-row row'>
-                                <div class='col-md-auto my-auto'><input type="checkbox" name="cleaning-software[]" value="{{ software.id }}"></div>
-                                <div class='col'><div class='f-20 w-100'>{{ software.title }}</div></div>
+            
+                        <!-- Liste des logiciels et champs associés -->
+                        <h5>Nombre d'infections trouvées <span class='h6 font-italic'>(saisir une valeur pour chaque logiciel utilisé)<span></h5>
+                        <div class='data-row row mt-3'>
+                            <div class='col-md-6 my-auto'>
+                                <label class="d-flex align-items-center">
+                                    <input class='mr-2' type="checkbox" name="cleaning-software[]" value="ADW" />
+                                    <span class="f-20">ADW</span>
+                                </label>
                             </div>
-                        {% endfor %}
+                            <div class='col-md-6'>
+                                <input type="number" name="adw-count" class="form-control" placeholder="Nombre d'infections">
+                            </div>
+                        </div>
+            
+                        <div class='data-row row mt-3'>
+                            <div class='col-md-6 my-auto'>
+                                <label class="d-flex align-items-center">
+                                    <input class='mr-2' type="checkbox" name="cleaning-software[]" value="ZHP" />
+                                    <span class="f-20">ZHP</span>
+                                </label>
+                            </div>
+                            <div class='col-md-6'>
+                                <input type="number" name="zhp-count" class="form-control" placeholder="Nombre d'infections">
+                            </div>
+                        </div>
+            
+                        <div class='data-row row mt-3'>
+                            <div class='col-md-6 my-auto'>
+                                <label class="d-flex align-items-center">
+                                    <input class='mr-2' type="checkbox" name="cleaning-software[]" value="MB" />
+                                    <span class="f-20">MB</span>
+                                </label>
+                            </div>
+                            <div class='col-md-6'>
+                                <input type="number" name="mb-count" class="form-control" placeholder="Nombre d'infections">
+                            </div>
+                        </div>
+            
+                        <div class='data-row row mt-3'>
+                            <div class='col-md-6 my-auto'>
+                                <label class="d-flex align-items-center">
+                                    <input class='mr-2' type="checkbox" name="cleaning-software[]" value="SAS" />
+                                    <span class="f-20">SAS</span>
+                                </label>
+                            </div>
+                            <div class='col-md-6'>
+                                <input type="number" name="sas-count" class="form-control" placeholder="Nombre d'infections">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -139,7 +185,7 @@
         {% elseif step == 6 %}
             <div class="row justify-content-around mb-3 report-container">
                 <div class='col-12 justify-content-center row step-title p-2 mb-3'>
-                    <div class='f-20'>Rapport CrystalDisk</div>
+                    <div class='f-20'>Rapport CrystalDisk - Usure batterie</div>
                 </div>
                 <div class="container-background col p-4 content list">
                     <div class="col-auto text-center">État du disk :</div>                    
@@ -155,7 +201,7 @@
                         </div>
                         <br>
                         <div>
-                            Taux d'usure : <input class='w-100' id="batteryDegradationInput" name="battery-degradation" type="text" placeholder="Taux">
+                            Taux d'usure de batterie : <input class='w-100' id="batteryDegradationInput" name="battery-degradation" type="text" placeholder="Taux">
                         </div>
                         <div>
                             
